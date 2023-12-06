@@ -1,8 +1,8 @@
 import axiosClient from "../../config/axios";
 import { LOGOUT, LOGIN } from "../../types/auth";
-
+import { useHistory } from "react-router-dom";
 const userUrl = "/user";
-
+const history = useHistory(); // Habilitar history para redireccionar.
 export const loginUser = (email, name, token) => ({
   type: LOGIN,
   payload: { email, name, token },
@@ -27,6 +27,8 @@ export const loginUserAction = (dataUser) => {
           loginUser(user.payload.email, user.payload.name, user.payload.token)
         );
         console.log("AUTORIZADO", user.payload.name);
+      } else {
+        history.push("/users/login");
       }
     } catch (error) {
       console.log("NO AUTORIZADO");
