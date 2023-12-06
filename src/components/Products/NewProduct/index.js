@@ -40,7 +40,7 @@ const NewProduct = ({ history }) => {
 
     addNewProduct(product);
     history.push("/products");
-    window.location = "/products";
+    //indow.location = "/products";
   };
 
   return (
