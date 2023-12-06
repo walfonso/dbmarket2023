@@ -1,5 +1,5 @@
 import axiosClient from "../../config/axios";
-import { LOGOUT, LOGIN} from "../../types/auth";
+import { LOGOUT, LOGIN } from "../../types/auth";
 
 const userUrl = "/user";
 
@@ -14,10 +14,6 @@ export const logout = () => {
   };
 };
 
-
-
-
-///
 export const loginUserAction = (dataUser) => {
   console.log("dataUser", dataUser);
   return async (dispatch) => {
@@ -27,7 +23,6 @@ export const loginUserAction = (dataUser) => {
 
       console.log(user);
       if (user.success) {
-        // localStorage.setItem("user", JSON.stringify(user));
         dispatch(
           loginUser(user.payload.email, user.payload.name, user.payload.token)
         );

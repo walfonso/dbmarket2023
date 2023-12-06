@@ -5,13 +5,9 @@ import { loginUserAction, logout } from "../../../store/actions/authActions";
 import { useSelector } from "react-redux";
 
 const Login = () => {
-  // states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // Redux state
   const { loading, message, users } = useSelector((state) => state.users);
-
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -21,6 +17,8 @@ const Login = () => {
 
   const handleLoginEvent = (e) => {
     e.preventDefault();
+    if (email.trim() === "" || password.trim() === "") return;
+
     const user = {
       email,
       password,
@@ -29,8 +27,6 @@ const Login = () => {
     try {
       dispatch(loginUserAction(user));
       history.push("/products");
-
-      //console.log("AUTORIZADO", loginSuccess(user));
     } catch (error) {
       console.error(error);
       //history.push("/users/login");
