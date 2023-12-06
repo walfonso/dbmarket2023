@@ -2,7 +2,7 @@ import axiosClient from "../../config/axios";
 import { LOGOUT, LOGIN } from "../../types/auth";
 import { useHistory } from "react-router-dom";
 const userUrl = "/user";
-const history = useHistory(); // Habilitar history para redireccionar.
+
 export const loginUser = (email, name, token) => ({
   type: LOGIN,
   payload: { email, name, token },
@@ -15,6 +15,7 @@ export const logout = () => {
 };
 
 export const loginUserAction = (dataUser) => {
+  const history = useHistory(); // Habilitar history para redireccionar.
   console.log("dataUser", dataUser);
   return async (dispatch) => {
     try {
