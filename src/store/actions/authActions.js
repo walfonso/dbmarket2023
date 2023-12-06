@@ -16,7 +16,7 @@ export const logout = () => {
 };
 
 export const loginUserAction = withRouter((props) => {
-  console.log("dataUser", dataUser);
+  console.log("dataUser", props.dataUser);
   return async (dispatch) => {
     try {
       const response = await axiosClient.post(
@@ -32,7 +32,7 @@ export const loginUserAction = withRouter((props) => {
         );
         console.log("AUTORIZADO", user.payload.name);
       } else {
-        propshistory.push("/users/login");
+        props.history.push("/users/login");
       }
     } catch (error) {
       console.log("NO AUTORIZADO");
