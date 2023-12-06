@@ -13,9 +13,8 @@ export const logout = () => {
     type: LOGOUT,
   };
 };
-
+const history = useHistory(); // Habilitar history para redireccionar.
 export const loginUserAction = (dataUser) => {
-  const history = useHistory(); // Habilitar history para redireccionar.
   console.log("dataUser", dataUser);
   return async (dispatch) => {
     try {
