@@ -14,12 +14,15 @@ export const logout = () => {
     type: LOGOUT,
   };
 };
-const history = useHistory(); // Habilitar history para redireccionar.
+
 export const loginUserAction = withRouter((props) => {
   console.log("dataUser", dataUser);
   return async (dispatch) => {
     try {
-      const response = await axiosClient.post(`${userUrl}/login`, dataUser);
+      const response = await axiosClient.post(
+        `${userUrl}/login`,
+        props.dataUser
+      );
       const user = response.data; // Assuming the API returns the user object
 
       console.log(user);
