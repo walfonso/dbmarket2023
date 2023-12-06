@@ -38,7 +38,7 @@ export const Routes = () => {
       <Route exact path="/clients/new" component={NewClient} />
       <Route exact path="/clients/edit/:id" component={EditClient} />
       <Route exact path="/products" component={Products} />
-      <Route exact path="/products/new" component={NewProduct} />
+      <PrivateRoute exact path="/products/new" component={NewProduct} />
       <PrivateRoute exact path="/products/edit/:id" component={EditProduct} />
       <Route exact path="/suppliers" component={Suppliers} />
       <Route exact path="/suppliers/new" component={NewSupplier} />

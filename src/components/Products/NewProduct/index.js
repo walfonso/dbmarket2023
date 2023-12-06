@@ -41,8 +41,7 @@ const NewProduct = ({ history }) => {
     addNewProduct(product);
 
     // Redireccionar a la lista de Productos
-    //history.push("/products");
-    //<Redirect to="/products" />;
+    history.push("/products");
     //window.location = "/products";
   };
 
