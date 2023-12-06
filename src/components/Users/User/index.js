@@ -13,22 +13,26 @@ const User = ({ user }) => {
   const dispatch = useDispatch();
   const history = useHistory(); // Habilitar history para redireccionar.
 
+  const user = useSelector((state) => state.authState);
   const onDeleteUser = (id) => {
-    // preguntar al usuario
-    Swal.fire({
-      title: "¿Estas seguro?",
-      text: "Esta accion es irreversible.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Aceptar",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.value) {
-        dispatch(deleteUserAction(id));
-      }
-    });
+    if (user.email) {
+      Swal.fire({
+        title: "¿Estas seguro?",
+        text: "Esta accion es irreversible.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.value) {
+          dispatch(deleteUserAction(id));
+        }
+      });
+    } else {
+      history.push(`/users/login`);
+    }
   };
 
   const onEditRedirection = (id) => {
