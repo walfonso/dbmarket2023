@@ -13,9 +13,9 @@ const User = ({ user }) => {
   const dispatch = useDispatch();
   const history = useHistory(); // Habilitar history para redireccionar.
 
-  const user = useSelector((state) => state.authState);
+  const userAuth = useSelector((state) => state.authState);
   const onDeleteUser = (id) => {
-    if (user.email) {
+    if (userAuth.email) {
       Swal.fire({
         title: "¿Estas seguro?",
         text: "Esta accion es irreversible.",
