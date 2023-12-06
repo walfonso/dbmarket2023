@@ -42,7 +42,7 @@ const NewProduct = ({ history }) => {
 
     // Redireccionar a la lista de Productos
     history.push("/products");
-    //window.location = "/products";
+    window.location = "/products";
   };
 
   return (
