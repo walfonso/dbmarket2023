@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import style from "./Sidebar.module.css";
 
 const Sidebar = () => {
