@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import style from "./Sidebar.module.css";
 
 const Sidebar = () => {
+  const user = useSelector((state) => state.authState);
   return (
     <div className={style.sidebar}>
       <ul>
@@ -12,17 +13,19 @@ const Sidebar = () => {
         <li>
           <Link to="/products">Productos</Link>
         </li>
-        <li>
-          <Link to="/users">Usuarios</Link>
-        </li>
-        {/*
-        <li>
-          <Link to="/clients">Clientes</Link>
-        </li>
-        <li>
-          <Link to="/suppliers">Proveedores</Link>
-        </li>
-        */}
+        {user.email && (
+          <>
+            <li>
+              <Link to="/users">Usuarios</Link>
+            </li>
+            <li>
+              <Link to="/clients">Clientes</Link>
+            </li>
+            <li>
+              <Link to="/suppliers">Proveedores</Link>
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );
