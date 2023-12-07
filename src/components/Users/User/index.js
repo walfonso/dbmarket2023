@@ -47,7 +47,7 @@ const User = ({ user }) => {
       </td>
       <td>{email}</td>
       <td className="actions">
-        {!userAuth.email && ( // Ocultar botones si el usuario está autenticado
+        {userAuth.email && ( // Ocultar botones si el usuario está autenticado
           <>
             <button
               type="button"
