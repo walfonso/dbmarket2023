@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { loginUserAction, logout } from "../../../store/actions/authActions";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,8 +32,10 @@ const Login = () => {
     if (email.trim() === "" || password.trim() === "") return;
 
     if (!isValidEmail(email) || !isValidPassword(password)) {
-      // Mostrar mensaje de error o realizar acciones necesarias
-      console.log("Email o contraseña no válidos");
+      // Mostrar mensaje de error utilizando react-toastify
+      toast.error("Por favor, ingresa un email y contraseña válidos", {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return;
     }
 
