@@ -3,23 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-//function getUser() {
-//  let user = localStorage.getItem("user");
-//  if (user) {
-//    user = JSON.parse(user);
-//  } else {
-//    user = null;
-//  }
-//  return user;
-//}
 
 const Dashboard = () => {
-  //const [user, setUser] = useState(getUser());
-  // const user = useSelector((state) => state.authState);
-  // const history = useHistory();
-  // if (!user.mail) {
-  //   history.push(`/users/login`);
-  // }
   return (
     <div className="row justify-content-center">
       <div className="col-md-8 p-4">

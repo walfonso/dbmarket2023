@@ -29,20 +29,21 @@ export const Routes = () => {
   console.log("valor de auth: ", auth);
   return (
     <Switch>
-      <PrivateRoute exact path="/" component={Dashboard} />
+      <Route exact path="/" component={Products} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route exact path="/users/login" component={Login} />
-      <Route exact path="/users" component={Users} />
-      <Route exact path="/users/new" component={NewUser} />
+      <PrivateRoute exact path="/users" component={Users} />
+      <PrivateRoute exact path="/users/new" component={NewUser} />
       <PrivateRoute exact path="/users/edit/:id" component={EditUser} />
-      <Route exact path="/clients" component={Clients} />
-      <Route exact path="/clients/new" component={NewClient} />
-      <Route exact path="/clients/edit/:id" component={EditClient} />
+      <PrivateRoute exact path="/clients" component={Clients} />
+      <PrivateRoute exact path="/clients/new" component={NewClient} />
+      <PrivateRoute exact path="/clients/edit/:id" component={EditClient} />
       <Route exact path="/products" component={Products} />
       <PrivateRoute exact path="/products/new" component={NewProduct} />
       <PrivateRoute exact path="/products/edit/:id" component={EditProduct} />
-      <Route exact path="/suppliers" component={Suppliers} />
-      <Route exact path="/suppliers/new" component={NewSupplier} />
-      <Route exact path="/suppliers/edit/:id" component={EditSupplier} />
+      <PrivateRoute exact path="/suppliers" component={Suppliers} />
+      <PrivateRoute exact path="/suppliers/new" component={NewSupplier} />
+      <PrivateRoute exact path="/suppliers/edit/:id" component={EditSupplier} />
       <Route path="*" component={NoFoundPage} />
     </Switch>
   );

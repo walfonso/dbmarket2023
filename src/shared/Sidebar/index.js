@@ -7,12 +7,17 @@ const Sidebar = () => {
   return (
     <div className={style.sidebar}>
       <ul>
-        <li>
-          <Link to="/">Dashboard</Link>
-        </li>
+        {user.email && (
+          <>
+            <li>
+              <Link to="/Dashboard">Dashboard</Link>
+            </li>
+          </>
+        )}
         <li>
           <Link to="/products">Productos</Link>
         </li>
+
         {user.email && (
           <>
             <li>
