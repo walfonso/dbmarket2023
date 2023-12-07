@@ -14,10 +14,26 @@ const Login = () => {
   const handleLogoutEvent = () => {
     dispatch(logout());
   };
+  const isValidEmail = (value) => {
+    // Expresión regular para validar un email básico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  };
+  const isValidPassword = (value) => {
+    // Puedes agregar tus propias reglas para la contraseña aquí
+    return value.length >= 6; // Por ejemplo, mínimo 6 caracteres
+  };
 
   const handleLoginEvent = (e) => {
     e.preventDefault();
+
     if (email.trim() === "" || password.trim() === "") return;
+
+    if (!isValidEmail(email) || !isValidPassword(password)) {
+      // Mostrar mensaje de error o realizar acciones necesarias
+      console.log("Email o contraseña no válidos");
+      return;
+    }
 
     const user = {
       email,
