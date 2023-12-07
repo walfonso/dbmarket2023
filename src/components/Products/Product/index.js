@@ -52,7 +52,7 @@ const Product = ({ product }) => {
       <td>{detail}</td>
       <td>{category}</td>
       <td className="actions">
-        {userAuth.email && (
+        {user.email && (
           <>
             <button
               type="button"
