@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { loginUserAction, logout } from "../../../store/actions/authActions";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify/dist/ReactToastify.cjs";
 
 const Login = () => {
   const [email, setEmail] = useState("");
