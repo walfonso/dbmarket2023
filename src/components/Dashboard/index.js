@@ -15,11 +15,11 @@ import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   //const [user, setUser] = useState(getUser());
-  const user = useSelector((state) => state.authState);
-  const history = useHistory();
-  if (!user.mail) {
-    history.push(`/users/login`);
-  }
+  // const user = useSelector((state) => state.authState);
+  // const history = useHistory();
+  // if (!user.mail) {
+  //   history.push(`/users/login`);
+  // }
   return (
     <div className="row justify-content-center">
       <div className="col-md-8 p-4">

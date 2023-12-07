@@ -29,7 +29,7 @@ export const Routes = () => {
   console.log("valor de auth: ", auth);
   return (
     <Switch>
-      <Route exact path="/" component={Dashboard} />
+      <PrivateRoute exact path="/" component={Dashboard} />
       <Route exact path="/users/login" component={Login} />
       <Route exact path="/users" component={Users} />
       <Route exact path="/users/new" component={NewUser} />
