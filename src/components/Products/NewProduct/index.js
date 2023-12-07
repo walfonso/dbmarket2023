@@ -8,6 +8,10 @@ const NewProduct = ({ history }) => {
   const [price, setPrice] = useState("");
   const [detail, setDetail] = useState("");
   const [category, setCategory] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [priceError, setPriceError] = useState("");
+  const [detailError, setDetailError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
 
   // Permite utilziar los dispatch
   const dispatch = useDispatch();
@@ -17,20 +21,51 @@ const NewProduct = ({ history }) => {
 
   // Llama el action
   const addNewProduct = (product) => dispatch(addNewProductAction(product));
+  //func val
+  const validateForm = () => {
+    let isValid = true;
 
+    if (name.trim() === "") {
+      setNameError("El nombre es requerido");
+      isValid = false;
+    } else {
+      setNameError("");
+    }
+
+    if (price.trim() === "") {
+      setPriceError("El precio es requerido");
+      isValid = false;
+    } else if (isNaN(parseFloat(price))) {
+      setPriceError("El precio debe ser un valor numérico");
+      isValid = false;
+    } else {
+      setPriceError("");
+    }
+
+    if (detail.trim() === "") {
+      setDetailError("El detalle es requerido");
+      isValid = false;
+    } else {
+      setDetailError("");
+    }
+
+    if (category.trim() === "") {
+      setCategoryError("La categoría es requerida");
+      isValid = false;
+    } else {
+      setCategoryError("");
+    }
+
+    return isValid;
+  };
+
+  //
   const onSubmit = (e) => {
     e.preventDefault();
-    //Validar formulario
-    if (
-      name.trim() === "" ||
-      price.trim() === "" ||
-      detail.trim() === "" ||
-      category.trim() === ""
-    )
+    if (!validateForm()) {
       return;
+    }
 
-    //Si no hay errores
-    //Crear Producto
     const product = {
       name,
       price,
@@ -59,12 +94,18 @@ const NewProduct = ({ history }) => {
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${nameError ? "is-invalid" : ""}`}
                   placeholder="Nombre del Producto"
                   name="name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setNameError("");
+                  }}
                 />
+                {nameError && (
+                  <div className="invalid-feedback">{nameError}</div>
+                )}
               </div>
 
               <div className="form-group">
@@ -73,12 +114,18 @@ const NewProduct = ({ history }) => {
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${priceError ? "is-invalid" : ""}`}
                   placeholder="Precio del Producto"
                   name="price"
                   value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                    setPriceError("");
+                  }}
                 />
+                {priceError && (
+                  <div className="invalid-feedback">{priceError}</div>
+                )}
               </div>
 
               <div className="form-group">
@@ -87,12 +134,18 @@ const NewProduct = ({ history }) => {
                 </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${detailError ? "is-invalid" : ""}`}
                   placeholder="Detalle del Producto"
                   name="detail"
                   value={detail}
-                  onChange={(e) => setDetail(e.target.value)}
+                  onChange={(e) => {
+                    setDetail(e.target.value);
+                    setDetailError("");
+                  }}
                 />
+                {detailError && (
+                  <div className="invalid-feedback">{detailError}</div>
+                )}
               </div>
 
               <div className="form-group">
@@ -105,8 +158,14 @@ const NewProduct = ({ history }) => {
                   placeholder="Categoria del Producto"
                   name="category"
                   value={category}
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    setCategoryError("");
+                  }}
                 />
+                {categoryError && (
+                  <div className="invalid-feedback">{categoryError}</div>
+                )}
               </div>
 
               <div className="form-group text-center">
