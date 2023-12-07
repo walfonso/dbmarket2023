@@ -5,6 +5,7 @@ import Product from "./Product";
 import { getAllProductsAction } from "../../store/actions/productsActions";
 
 const Products = () => {
+  const user = useSelector((state) => state.authState);
   const dispatch = useDispatch();
   useEffect(() => {
     const getAllProducts = () => dispatch(getAllProductsAction());
@@ -26,12 +27,14 @@ const Products = () => {
 
       <div className="row pb-2">
         <div className="col-12 text-right">
-          <Link
-            to={"/products/new"}
-            className="btn btn-danger nuevo-post d-block d-md-inline-block"
-          >
-            Nuevo Producto &#43;
-          </Link>
+          {user.email && (
+            <Link
+              to={"/products/new"}
+              className="btn btn-danger nuevo-post d-block d-md-inline-block"
+            >
+              Nuevo Producto &#43;
+            </Link>
+          )}
         </div>
       </div>
 

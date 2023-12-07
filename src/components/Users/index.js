@@ -6,6 +6,7 @@ import User from "./User";
 import { getAllUsersAction } from "../../store/actions/usersActions";
 
 const Users = () => {
+  const userAuth = useSelector((state) => state.authState);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,12 +29,14 @@ const Users = () => {
 
       <div className="row pb-2">
         <div className="col-12 text-right">
-          <Link
-            to={"/users/new"}
-            className="btn btn-danger nuevo-post d-block d-md-inline-block"
-          >
-            Nuevo Usuario &#43;
-          </Link>
+          {userAuth.email && (
+            <Link
+              to={"/users/new"}
+              className="btn btn-danger nuevo-post d-block d-md-inline-block"
+            >
+              Nuevo Usuario &#43;
+            </Link>
+          )}
         </div>
       </div>
 
