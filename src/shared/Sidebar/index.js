@@ -15,12 +15,14 @@ const Sidebar = () => {
         <li>
           <Link to="/users">Usuarios</Link>
         </li>
+        {/*
         <li>
           <Link to="/clients">Clientes</Link>
         </li>
         <li>
           <Link to="/suppliers">Proveedores</Link>
         </li>
+        */}
       </ul>
     </div>
   );
