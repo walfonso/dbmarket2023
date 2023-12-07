@@ -52,20 +52,24 @@ const Product = ({ product }) => {
       <td>{detail}</td>
       <td>{category}</td>
       <td className="actions">
-        <button
-          type="button"
-          onClick={() => onEditRedirection(_id)}
-          className="btn btn-primary m-1"
-        >
-          Editar
-        </button>
-        <button
-          type="button"
-          className="btn btn-danger m-1"
-          onClick={() => onDeleteProduct(_id)}
-        >
-          Eliminar
-        </button>
+        {userAuth.email && (
+          <>
+            <button
+              type="button"
+              onClick={() => onEditRedirection(_id)}
+              className="btn btn-primary m-1"
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger m-1"
+              onClick={() => onDeleteProduct(_id)}
+            >
+              Eliminar
+            </button>
+          </>
+        )}
       </td>
     </tr>
   );
