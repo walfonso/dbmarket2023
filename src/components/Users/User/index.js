@@ -46,9 +46,9 @@ const User = ({ user }) => {
         <span className="font-weight-bold"> {name} </span>
       </td>
       <td>{email}</td>
-      {userAuth.email && ( // Ocultar botones si el usuario está autenticado
-        <>
-          <td className="actions">
+      <td className="actions">
+        {userAuth.email && ( // Ocultar botones si el usuario está autenticado
+          <>
             <button
               type="button"
               onClick={() => onEditRedirection(_id)}
@@ -63,9 +63,9 @@ const User = ({ user }) => {
             >
               Eliminar
             </button>
-          </td>
-        </>
-      )}
+          </>
+        )}
+      </td>
     </tr>
   );
 };
