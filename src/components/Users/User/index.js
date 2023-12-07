@@ -47,20 +47,24 @@ const User = ({ user }) => {
       </td>
       <td>{email}</td>
       <td className="actions">
-        <button
-          type="button"
-          onClick={() => onEditRedirection(_id)}
-          className="btn btn-primary m-1"
-        >
-          Editar
-        </button>
-        <button
-          type="button"
-          className="btn btn-danger m-1"
-          onClick={() => onDeleteUser(_id)}
-        >
-          Eliminar
-        </button>
+        {!userAuth.email && ( // Ocultar botones si el usuario está autenticado
+          <>
+            <button
+              type="button"
+              onClick={() => onEditRedirection(_id)}
+              className="btn btn-primary m-1"
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger m-1"
+              onClick={() => onDeleteUser(_id)}
+            >
+              Eliminar
+            </button>
+          </>
+        )}
       </td>
     </tr>
   );
