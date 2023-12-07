@@ -13,9 +13,9 @@ import { useHistory } from "react-router-dom";
 //  return user;
 //}
 
-const user = useSelector((state) => state.authState);
 const Dashboard = () => {
   //const [user, setUser] = useState(getUser());
+  const user = useSelector((state) => state.authState);
   const history = useHistory();
   if (!user.mail) {
     history.push(`/users/login`);
