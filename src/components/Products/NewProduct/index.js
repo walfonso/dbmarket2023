@@ -21,6 +21,8 @@ const NewProduct = ({ history }) => {
 
   // Llama el action
   const addNewProduct = (product) => dispatch(addNewProductAction(product));
+  const categories = ["Alimentos", "Bebidas", "Limpieza"];
+
   //func val
   const validateForm = () => {
     let isValid = true;
@@ -152,17 +154,26 @@ const NewProduct = ({ history }) => {
                 <label>
                   Categoria <span className="text-danger">*</span>
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Categoria del Producto"
+                <select
+                  className={`form-control ${
+                    categoryError ? "is-invalid" : ""
+                  }`}
                   name="category"
                   value={category}
                   onChange={(e) => {
                     setCategory(e.target.value);
                     setCategoryError("");
                   }}
-                />
+                >
+                  <option value="" disabled>
+                    Seleccione una categoría
+                  </option>
+                  {categories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
                 {categoryError && (
                   <div className="invalid-feedback">{categoryError}</div>
                 )}

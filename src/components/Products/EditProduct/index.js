@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { editProductAction } from "../../../store/actions/productsActions";
+
 const EditProduct = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -22,8 +23,6 @@ const EditProduct = () => {
 
   if (!productState) return history.push("/");
 
-  console.log(productState);
-
   const { name, price, detail, category } = productState;
 
   const onFormChange = (e) => {
@@ -38,9 +37,7 @@ const EditProduct = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(e.target.value);
-
-    //Validar formulario.
+    // Validar formulario.
     if (
       name.trim() === "" ||
       price === "" ||
@@ -49,9 +46,8 @@ const EditProduct = () => {
     )
       return;
 
-    //Si no hay errores.
-    //Crear Cliente.
-    const product = {
+    // Crear Producto.
+    const editedProduct = {
       _id: productState._id,
       name,
       price,
@@ -59,8 +55,9 @@ const EditProduct = () => {
       category,
     };
 
-    editProduct(product);
-    // Redireccionar a la lista de clientes.
+    editProduct(editedProduct);
+
+    // Redireccionar a la lista de productos.
     history.push("/products");
   };
 
@@ -118,14 +115,19 @@ const EditProduct = () => {
 
               <div className="form-group">
                 <label>Categoria</label>
-                <textarea
-                  type="text"
+                <select
                   className="form-control"
-                  placeholder="Categoria del Producto"
                   name="category"
                   value={category}
                   onChange={onFormChange}
-                ></textarea>
+                >
+                  <option value="" disabled>
+                    Seleccione una categoría
+                  </option>
+                  <option value="Alimentos">Alimentos</option>
+                  <option value="Bebidas">Bebidas</option>
+                  <option value="Limpieza">Limpieza</option>
+                </select>
               </div>
 
               <div className="form-group text-center">
@@ -141,11 +143,12 @@ const EditProduct = () => {
                 Guardar
               </button>
             </form>
+
             {loading ? <p> Loading... </p> : null}
 
             {error ? (
               <p className="alert alert-danger p-2 m-4 text-center">
-                Ocurrio un error.
+                Ocurrió un error.
               </p>
             ) : null}
           </div>
